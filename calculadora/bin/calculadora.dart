@@ -2,11 +2,10 @@
 import 'dart:io';
 
 void main() {
-  double numeroUm = double.parse(stdin.readLineSync()!); // converte string p double
-  double numDois = double.parse(stdin.readLineSync()!); // converte string p double
+  double numeroUm = 0; // converte string p double
+  double numDois = 0; // converte string p double
+  String operacao = ""; 
 
-
-// Null safity  proteção de valores vazios. o ! indica que o num nao vai vir nulo
 
 void soma(){
   print(numeroUm + numDois);
@@ -29,10 +28,56 @@ void multiplicacao(){
   print(numeroUm * numDois);
 }
 
+void calcular(){
+  switch(operacao) {
+  case "+": 
+  soma();
 
-soma();
-subtracao();
-divisao();
-multiplicacao();
+  case "-":
+  subtracao();
+
+  case "*":
+  multiplicacao();
+
+  case "/":
+  divisao();
+  break; 
+  }
+}
+
+print("Digite o primeiro valor: ");
+
+//tratamento de erro para casos de valores nulos
+//atribuindo um novo stdin as variaveis de numUm, numDis e operacao 
+// variavel de entrada. string que pode vir nula.
+String? entrada = stdin.readLineSync();
+if (entrada != null){
+  if (entrada != ""){
+    numeroUm = double.parse(entrada);
+  }
+}
+
+print("Digite uma operação: ");
+
+entrada = stdin.readLineSync();
+
+if (entrada != null){
+  if (entrada != ""){
+    operacao = entrada; 
+  }
+}
+
+print("Digite o segundo valor: ");
+
+entrada = stdin.readLineSync();
+if (entrada != null){
+  if (entrada != ""){
+    numDois = double.parse(entrada);
+  }
+}
+
+print("O resultado da operação é: ");
+
+calcular();
 
 }
