@@ -18,4 +18,7 @@ String? validaCategoria(String? categoria, List<String> categorias) {
     print('Categoria inválida. Tente novamente.');
     return validaCategoria(categoria, categorias);
   }
+
+
+  
 }
